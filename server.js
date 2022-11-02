@@ -21,8 +21,8 @@ app.use(cors());
 //DB connection
 mongoose
     .connect(process.env.DATABASE)
-    .then(() => console.log("DB Connected".red.bold))
-    .catch((err) => console.log("DB Error =>".err));
+    .then(() => console.log("DB Connected".green.bold))
+    .catch((err) => console.log("DB Error =>".err))
 
 
 // routes middleware

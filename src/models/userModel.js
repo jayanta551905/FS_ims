@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const userSchema = mongoose.Schema({
     email: {
         type: String,
-        validator: [validator.isImail, "Please provide a valid email"],
+        validator: [validator.isEmail, "Please provide a valid email"],
         trim: true,
         lowercase: true,
         unique: true,
@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
         required: [true, "Password is required"],
         validate: {
             validator: (value) =>
-                validator.isStrongPassowrd(value, {
+                validator.isStrongPassword(value, {
                     minLength: 6,
                     minLowercase: 3,
                     minNumbers: 1,
@@ -58,7 +58,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, "Please provide your last name"],
         trim: true,
-        minLength: [3, "Name must be at least 3 charecters"],
+        minLength: [3, "Name must be at least 3 characters"],
         maxLength: [100, "Name is too large"],
     },
 
@@ -90,7 +90,7 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre("save", function (next){
     if (!this.isModified("password")){
-        // only run if password is modified, otherwise it will run everytime we save the user! 
+        // only run if password is modified, otherwise it will run every time we save the user! 
         return next();
     }
     const password = this.password;

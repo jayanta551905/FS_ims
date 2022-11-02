@@ -6,7 +6,7 @@ const {signup} = require("../controller/userController");
 router.post("/signup", signup);
 router.get("/", (req, res) => {
     res.status(200).json({
-        status: "Welcome to FS_ims system"
+        status: "Welcome to FS_IMS system"
     });
 });
 
